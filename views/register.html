@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | Open Learn</title>
+
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="/js/axios.min.js"></script>
+    <script src="/js/register.js" defer></script>
+
+    <title>Sign Up | OPEN Learn</title>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="header">
+            <h2>Sign Up | OPEN Learn</h2>
+        </div>
+        <div class="inputs">
+            <div id="msg" class="hidden">
+                <h2 id="msg-text"></h2>
+                <button id="close" class="close">✖️</button>
+            </div>
+            <div class="inpbox">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="inp">
+            </div>
+            <div class="inpbox">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="inp">
+            </div>
+            <div class="inpbox">
+                <label for="password">password</label>
+                <input type="password" id="password" class="inp">
+            </div>
+            <button class="submit" id="submit">
+                Sign Up
+            </button>
+            <div class="help">
+                <p>Already Have Account ? <a href="/login">Go To Login</a></p>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

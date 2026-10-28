@@ -17,6 +17,10 @@ router.get("/login", (req, res) => {
     res.sendFile(path.join(viewsPath, "login.html"));
 });
 
+router.get("/register", (req, res) => {
+    res.sendFile(path.join(viewsPath, "register.html"));
+});
+
 router.get("/add-resource", (req, res) => {
     res.sendFile(path.join(viewsPath, "addresource.html"));
 });

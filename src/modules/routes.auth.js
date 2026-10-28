@@ -2,6 +2,8 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { randomUUID } = require("crypto");
+
 
 const path = require("path");
 
@@ -10,33 +12,67 @@ const secret = process.env.JWT_SECRET;
 
 const db = require("./db");
 
-authRoutes.post("/login" , (req , res) => {
-    const {username , password} = req.body;
+
+authRoutes.post("/login", (req, res) => {
+    const { username, password } = req.body || {};
+
     if (!username || !password) {
-        res.status(400).json({success : false , msg : "Invalid username or password"});
-        return;
+        return res.status(400).json({
+            success: false,
+            msg: "Invalid username or password"
+        });
     }
 
-    const sql = "SELECT * FROM `openlearn` WHERE `username`=? OR `email`=?";
-    db.query(sql , [username , username] , async (err , result) => {
-        if (err) return res.status(500).json({success:false , msg:"Internal Server Error"});
+    const sql = "SELECT * FROM `users` WHERE `username` = ? OR `email` = ?";
 
-        if (result.length > 0) {
+    db.query(sql, [username, username], async (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({
+                success: false,
+                msg: "Internal Server Error"
+            });
+        }
+
+        if (result.length === 0) {
+            return res.status(401).json({
+                success: false,
+                msg: "Invalid username or password"
+            });
+        }
+
+        try {
             const user = result[0];
-            const usr = {
-                username:username,
-                email:user.email,
-                UUID:user.UUID,
+            const isMatch = await bcrypt.compare(password, user.password);
+
+            if (!isMatch) {
+                return res.status(401).json({
+                    success: false,
+                    msg: "Invalid username or password"
+                });
             }
 
-            const is_match = await bcrypt.compare(password , user.password);
-            if (is_match) {
-                const token = jwt.sign(usr , secret , {expiresIn:"24h"});
-                res.status(200).json({success:true , token : token});
-            }else{
-                return res.status(403).json({success:false , msg:"Invalid username or password"});
-            }
-        }else return res.status(403).json({success:false , msg:"Invalid username or password"});
+            const payload = {
+                username: user.username,
+                email: user.email,
+                UUID: user.UUID
+            };
+
+            const token = jwt.sign(payload, secret, {
+                expiresIn: "24h"
+            });
+
+            return res.status(200).json({
+                success: true,
+                token
+            });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({
+                success: false,
+                msg: "Internal Server Error"
+            });
+        }
     });
 });
 
@@ -49,7 +85,7 @@ authRoutes.post("/register" , (req , res) => {
 
     const sql = "SELECT * FROM `users` WHERE `username`=? OR `email`=?"
 
-    db.query(sql , [username , email] , (err , result) => {
+    db.query(sql , [username , email] , async (err , result) => {
         if (err) return res.status(500).json({success:false , msg:"Internal Server Error"});
 
         if (result > 0) {
@@ -57,13 +93,13 @@ authRoutes.post("/register" , (req , res) => {
         }else{
             const sql2 = "INSERT INTO `users`(`UUID`, `username`, `password`, `email`) VALUES (? , ? , ? , ?)";
 
-            const UUID = Math.floor(1000 + Math.random() * 9000);
-
-            db.query(sql2 , [UUID , username , password , email] , (err , result) => {
+            const UUID = randomUUID();
+            const hash = await bcrypt.hash(password , 10);
+            db.query(sql2 , [UUID , username , hash , email] , (err , result) => {
                 if (err) return res.status(500).json({success:false , msg:"Internal Server Error"});
 
                 if (result.affectedRows > 0) {
-                    const usr = {username , email , UUID};
+                    const usr = {username : username , email : email, UUID : UUID};
                     const token = jwt.sign(usr , secret , {expiresIn:"24h"});
                     res.status(200).json({success : true , token : token})
                 }else{
