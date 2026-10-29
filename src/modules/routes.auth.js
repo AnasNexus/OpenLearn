@@ -55,7 +55,8 @@ authRoutes.post("/login", (req, res) => {
             const payload = {
                 username: user.username,
                 email: user.email,
-                UUID: user.UUID
+                UUID: user.UUID,
+                role:user.role
             };
 
             const token = jwt.sign(payload, secret, {
@@ -99,7 +100,7 @@ authRoutes.post("/register" , (req , res) => {
                 if (err) return res.status(500).json({success:false , msg:"Internal Server Error"});
 
                 if (result.affectedRows > 0) {
-                    const usr = {username : username , email : email, UUID : UUID};
+                    const usr = {username : username , email : email, UUID : UUID , role:"user"};
                     const token = jwt.sign(usr , secret , {expiresIn:"24h"});
                     res.status(200).json({success : true , token : token})
                 }else{

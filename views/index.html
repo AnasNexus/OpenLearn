@@ -1,12 +1,309 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main | Open Learn</title>
+
+    <meta
+        name="description"
+        content="Discover tutorials, books, courses, and documentation with OpenLearn."
+    >
+
+    <title>OpenLearn | Knowledge for Everyone</title>
+
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <div class="container"></div>
-    
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="/" class="logo">
+            <span class="logo-icon">O</span>
+            <span>Open<span class="logo-highlight">Learn</span></span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#explore">Explore</a>
+            <a href="#topics">Topics</a>
+            <a href="#how-it-works">About</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="/login" class="btn btn-outline">Log in</a>
+            <a href="/register" class="btn btn-primary">Get Started</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    <span class="status-dot"></span>
+                    Open Education for Everyone
+                </div>
+
+                <h1>
+                    Knowledge should be
+                    <span>open to everyone.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Discover tutorials, books, courses, and documentation
+                    shared by learners and developers around the world.
+                </p>
+
+                <form class="search-box" action="/search" method="GET">
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        type="search"
+                        name="q"
+                        placeholder="Search tutorials, courses, books..."
+                        aria-label="Search resources"
+                    >
+
+                    <button type="submit" class="btn btn-primary">
+                        Search
+                    </button>
+                </form>
+
+                <div class="popular-searches">
+                    <span>Popular:</span>
+                    <a href="/search?q=JavaScript">JavaScript</a>
+                    <a href="/search?q=Python">Python</a>
+                    <a href="/search?q=SQL">SQL</a>
+                    <a href="/search?q=Web+Development">Web Development</a>
+                </div>
+
+            </div>
+
+            <div class="hero-decoration decoration-one"></div>
+            <div class="hero-decoration decoration-two"></div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="stats">
+            <div class="stat-item">
+                <span class="stat-icon">▤</span>
+                <div>
+                    <strong>Learning Resources</strong>
+                    <p>Books, courses and tutorials</p>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-icon">⌘</span>
+                <div>
+                    <strong>Multiple Topics</strong>
+                    <p>Explore different fields</p>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-icon">↗</span>
+                <div>
+                    <strong>Community Driven</strong>
+                    <p>Resources shared by learners</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topics -->
+        <section class="section" id="topics">
+
+            <div class="section-header">
+                <div>
+                    <span class="section-eyebrow">FIND YOUR PATH</span>
+                    <h2>Explore by topic</h2>
+                    <p>Start learning something new today.</p>
+                </div>
+
+                <a href="/topics" class="text-link">View all topics →</a>
+            </div>
+
+            <div class="topics-grid">
+
+                <a href="/topics/programming" class="topic-card">
+                    <div class="topic-icon icon-green">&lt;/&gt;</div>
+                    <h3>Programming</h3>
+                    <p>Learn languages, algorithms, and software development.</p>
+                    <span class="topic-link">Explore topic →</span>
+                </a>
+
+                <a href="/topics/web-development" class="topic-card">
+                    <div class="topic-icon icon-blue">⌘</div>
+                    <h3>Web Development</h3>
+                    <p>Build websites and applications for the modern web.</p>
+                    <span class="topic-link">Explore topic →</span>
+                </a>
+
+                <a href="/topics/databases" class="topic-card">
+                    <div class="topic-icon icon-purple">▤</div>
+                    <h3>Databases</h3>
+                    <p>Understand SQL, data modeling, and database systems.</p>
+                    <span class="topic-link">Explore topic →</span>
+                </a>
+
+                <a href="/topics/computer-science" class="topic-card">
+                    <div class="topic-icon icon-orange">◈</div>
+                    <h3>Computer Science</h3>
+                    <p>Explore computing fundamentals and problem solving.</p>
+                    <span class="topic-link">Explore topic →</span>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Latest Resources -->
+        <section class="section resources-section" id="explore">
+
+            <div class="section-header">
+                <div>
+                    <span class="section-eyebrow">KEEP DISCOVERING</span>
+                    <h2>Explore resources</h2>
+                    <p>Find useful material for your next learning session.</p>
+                </div>
+
+                <a href="/resources" class="text-link">View all resources →</a>
+            </div>
+
+            <div class="resources-grid">
+
+                <article class="resource-card">
+                    <div class="resource-top">
+                        <span class="resource-type">DOCUMENTATION</span>
+                        <span class="resource-symbol symbol-green">JS</span>
+                    </div>
+
+                    <h3>JavaScript Guide</h3>
+                    <p>
+                        Learn the fundamentals of JavaScript and how to
+                        build interactive web applications.
+                    </p>
+
+                    <div class="resource-tags">
+                        <span>JavaScript</span>
+                        <span>Beginner</span>
+                    </div>
+
+                    <div class="resource-footer">
+                        <span class="resource-category">Programming</span>
+                        <span class="resource-arrow">↗</span>
+                    </div>
+                </article>
+
+                <article class="resource-card">
+                    <div class="resource-top">
+                        <span class="resource-type">COURSE</span>
+                        <span class="resource-symbol symbol-blue">Py</span>
+                    </div>
+
+                    <h3>Python Fundamentals</h3>
+                    <p>
+                        Build a solid foundation in Python, from basic
+                        syntax to practical programming concepts.
+                    </p>
+
+                    <div class="resource-tags">
+                        <span>Python</span>
+                        <span>Beginner</span>
+                    </div>
+
+                    <div class="resource-footer">
+                        <span class="resource-category">Programming</span>
+                        <span class="resource-arrow">↗</span>
+                    </div>
+                </article>
+
+                <article class="resource-card">
+                    <div class="resource-top">
+                        <span class="resource-type">REFERENCE</span>
+                        <span class="resource-symbol symbol-purple">SQL</span>
+                    </div>
+
+                    <h3>SQL Learning Guide</h3>
+                    <p>
+                        Understand queries, tables, relationships,
+                        and the basics of relational databases.
+                    </p>
+
+                    <div class="resource-tags">
+                        <span>SQL</span>
+                        <span>Beginner</span>
+                    </div>
+
+                    <div class="resource-footer">
+                        <span class="resource-category">Databases</span>
+                        <span class="resource-arrow">↗</span>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="demo-notice">
+                Preview content only. Real resources will come from the API.
+            </p>
+        </section>
+
+        <!-- How it works -->
+        <section class="section how-section" id="how-it-works">
+            <div class="how-content">
+                <span class="section-eyebrow">LEARN TOGETHER</span>
+                <h2>Good knowledge deserves to be shared.</h2>
+                <p>
+                    OpenLearn helps learners discover useful educational
+                    resources and contribute material that can help others.
+                </p>
+
+                <a href="/register" class="btn btn-primary">
+                    Join OpenLearn
+                </a>
+            </div>
+
+            <div class="how-steps">
+                <div class="step">
+                    <span class="step-number">01</span>
+                    <div>
+                        <h3>Discover</h3>
+                        <p>Search for resources that match your interests.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">02</span>
+                    <div>
+                        <h3>Learn</h3>
+                        <p>Explore books, courses, tutorials, and guides.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">03</span>
+                    <div>
+                        <h3>Contribute</h3>
+                        <p>Submit useful resources for review and sharing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="/" class="logo">
+            <span class="logo-icon">O</span>
+            <span>Open<span class="logo-highlight">Learn</span></span>
+        </a>
+
+        <p>Knowledge grows when it is shared.</p>
+
+        <span class="footer-copy">© 2026 OpenLearn</span>
+    </footer>
+
 </body>
 </html>
