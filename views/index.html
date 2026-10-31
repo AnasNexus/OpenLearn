@@ -9,6 +9,8 @@
         name="description"
         content="Discover tutorials, books, courses, and documentation with OpenLearn."
     >
+    <script src="/js/axios.min.js"></script>
+    <script src="/js/index.js" defer></script>
 
     <title>OpenLearn | Knowledge for Everyone</title>
 
@@ -125,36 +127,7 @@
                 <a href="/topics" class="text-link">View all topics →</a>
             </div>
 
-            <div class="topics-grid">
-
-                <a href="/topics/programming" class="topic-card">
-                    <div class="topic-icon icon-green">&lt;/&gt;</div>
-                    <h3>Programming</h3>
-                    <p>Learn languages, algorithms, and software development.</p>
-                    <span class="topic-link">Explore topic →</span>
-                </a>
-
-                <a href="/topics/web-development" class="topic-card">
-                    <div class="topic-icon icon-blue">⌘</div>
-                    <h3>Web Development</h3>
-                    <p>Build websites and applications for the modern web.</p>
-                    <span class="topic-link">Explore topic →</span>
-                </a>
-
-                <a href="/topics/databases" class="topic-card">
-                    <div class="topic-icon icon-purple">▤</div>
-                    <h3>Databases</h3>
-                    <p>Understand SQL, data modeling, and database systems.</p>
-                    <span class="topic-link">Explore topic →</span>
-                </a>
-
-                <a href="/topics/computer-science" class="topic-card">
-                    <div class="topic-icon icon-orange">◈</div>
-                    <h3>Computer Science</h3>
-                    <p>Explore computing fundamentals and problem solving.</p>
-                    <span class="topic-link">Explore topic →</span>
-                </a>
-
+            <div id="topics-grid" class="topics-grid">
             </div>
         </section>
 
@@ -171,7 +144,7 @@
                 <a href="/resources" class="text-link">View all resources →</a>
             </div>
 
-            <div class="resources-grid">
+            <div id="resources-grid" class="resources-grid">
 
                 <article class="resource-card">
                     <div class="resource-top">

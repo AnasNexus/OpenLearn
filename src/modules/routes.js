@@ -24,6 +24,9 @@ router.get("/register", (req, res) => {
 router.get("/add-resource", (req, res) => {
     res.sendFile(path.join(viewsPath, "addresource.html"));
 });
+router.get("/topics", (req, res) => {
+    res.sendFile(path.join(viewsPath, "topics.html"));
+});
 
 router.get("/admin", (req, res) => {
     res.sendFile(path.join(viewsPath, "admin.html"));

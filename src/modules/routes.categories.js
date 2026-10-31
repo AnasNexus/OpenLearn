@@ -6,7 +6,7 @@ const db = require("./db");
 
 categories.get("/", (req, res) => {
     const sql = `
-        SELECT id, name, slug, description
+        SELECT id, name, slug, description , icon , color
         FROM categories
         ORDER BY name ASC
     `;
